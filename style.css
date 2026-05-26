@@ -1,0 +1,289 @@
+/* ==========================================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+:root {
+    --bg-black: #0b0b0b;
+    --bg-dark-gray: #121212;
+    --bg-card-gray: #1a1a1a;
+    --border-gray: #2a2a2a;
+    --text-white: #ffffff;
+    --text-muted: #aaaaaa;
+    --primary-accent: #ffffff; 
+    --primary-accent-hover: #e0e0e0;
+    --details-muted: #888888;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Classes Utilitárias */
+.fw-extrabold { font-weight: 800; }
+.tracking-wider { letter-spacing: 1px; }
+.tracking-widest { letter-spacing: 3px; }
+.max-w-600 { max-width: 600px; }
+.max-w-300 { max-width: 300px; }
+.bg-dark-variant { background-color: var(--bg-dark-gray); }
+.text-light-muted { color: var(--text-muted); }
+
+.border-card {
+    border: 1px solid var(--border-gray);
+}
+
+.border-dashed {
+    border: 1px dashed #333333 !important;
+}
+
+/* ==========================================================================
+   2. COMPONENTES ESPECÍFICOS (Navbar, Hero, Títulos)
+   ========================================================================== */
+/* Moldura Circular para a Logo */
+.navbar-logo-circle {
+    border-radius: 50%;
+    border: 2px solid var(--border-gray);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    object-fit: cover;
+}
+
+/* Navbar Premium Layout */
+.navbar {
+    background-color: rgba(11, 11, 11, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-gray);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-muted);
+    padding: 8px 15px !important;
+    transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover, 
+.navbar-nav .nav-link.active {
+    color: var(--text-white);
+}
+
+/* Títulos de Seções */
+.section-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-accent);
+    border-radius: 1px;
+}
+
+.section-title.text-start::after {
+    left: 0;
+    transform: none;
+}
+
+/* Hero Section com Imagem de Fundo */
+.hero-section {
+    min-height: 100vh;
+    padding-top: 100px;
+    position: relative;
+    background: linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.88)), url('img/tatame_1.webp') no-repeat center center/cover;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, #ffffff, #a3a3a3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   3. CARD TEXTS, INTERAÇÕES E HOVERS
+   ========================================================================== */
+/* Correção da cor branca nos títulos dos diferenciais */
+.text-card-white h5, .text-card-white .fw-bold {
+    color: var(--text-white) !important;
+}
+
+/* Cards Padrão */
+.card {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--bg-card-gray) !important;
+}
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--text-white);
+    box-shadow: 0 8px 24px rgba(255,255,255,0.05);
+}
+
+/* Elementos com Efeito de Hover Solicitados (Investimento, Mapa, Contatos e Horários) */
+.item-hover-effect {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.item-hover-effect:hover {
+    transform: translateY(-3px) scale(1.01);
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.04);
+}
+
+/* Espaçamento e Respiro nos Contatos */
+.contact-block {
+    padding: 8px 0;
+}
+
+/* Círculos Perfeitos nos Ícones de Contato */
+.contact-icon-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   4. GRADE DE HORÁRIOS (TABELA / GRID)
+   ========================================================================== */
+.table {
+    --bs-table-bg: var(--bg-card-gray) !important;
+    --bs-table-hover-bg: #222222 !important;
+    border-color: var(--border-gray) !important;
+}
+
+@media (min-width: 1200px) {
+    .schedule-grid-container {
+        max-width: 850px;
+    }
+}
+
+#horarios .badge {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   5. CARROSSEL DE FOTOS (ESTRUTURA / MAT")
+   ========================================================================== */
+#carouselEstrutura {
+    background-color: var(--bg-dark-gray);
+}
+
+.carousel-custom-img {
+    height: 600px;
+    object-fit: cover;
+}
+
+/* Tratamento Especial para Imagens Retrato */
+.portrait-crop-container {
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.85);
+}
+
+.carousel-custom-img-portrait {
+    max-height: 600px;
+    width: auto !important;
+    object-fit: contain;
+}
+
+.bg-caption-blur {
+    background-color: rgba(11, 11, 11, 0.75);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-gray);
+    padding: 15px 25px !important;
+    bottom: 30px;
+}
+
+/* ==========================================================================
+   6. ANIMAÇÕES E COMPONENTES FLUTUANTES
+   ========================================================================== */
+/* WhatsApp Floating Action */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #20ba5a;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.hover-white:hover {
+    color: var(--text-white) !important;
+}
+
+/* Indicadores de Scroll & Entrada */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    z-index: 2;
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.animate-up {
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+}
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
