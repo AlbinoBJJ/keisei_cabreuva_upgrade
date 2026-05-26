@@ -303,3 +303,82 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ==========================================================================
+   8. MENU FLUTUANTE EXPANSÍVEL (WHATSAPP / INSTAGRAM)
+   ========================================================================== */
+.social-float-menu {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Botão Principal de Gatilho */
+.main-float-trigger {
+    width: 60px;
+    height: 60px;
+    background-color: var(--bg-card-gray);
+    color: var(--text-white);
+    border: 2px solid var(--border-gray);
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sub-botões (Começam escondidos atrás do principal) */
+.sub-float-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(20px) scale(0.6);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cores específicas das marcas */
+.whatsapp-btn { background-color: #25d366; }
+.whatsapp-btn:hover { background-color: #20ba5a; }
+
+.instagram-btn { background-color: #e1306c; }
+.instagram-btn:hover { background-color: #c13584; }
+
+/* Regra mágica de ativação ao passar o mouse por cima do contêiner */
+.social-float-menu:hover .sub-float-btn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Pequeno efeito de rotação no ícone principal ao abrir o menu */
+.social-float-menu:hover .main-float-trigger {
+    background-color: var(--text-white);
+    color: var(--bg-black);
+    border-color: var(--text-white);
+    transform: rotate(135deg);
+}
+
+/* Delay cascata para os botões subirem um por um */
+.social-float-menu .sub-float-btn:nth-child(2) {
+    transition-delay: 0.05s;
+}
+.social-float-menu .sub-float-btn:nth-child(1) {
+    transition-delay: 0.1s;
+}
