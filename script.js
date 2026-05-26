@@ -36,4 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // Animação de Scroll para os Diferenciais usando Intersection Observer
+    const animatedElements = document.querySelectorAll('.animate-scroll');
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const delay = element.getAttribute('data-delay') || 0;
+
+                // Aplica o atraso cascata antes de disparar o surgimento
+                setTimeout(() => {
+                    element.classList.add('is-visible');
+                }, delay);
+
+                // Para de observar o elemento após ele já ter aparecido
+                observer.unobserve(element);
+            }
+        });
+    }, {
+        threshold: 0.15 // Dispara a animação quando 15% do card estiver visível
+    });
+
+    animatedElements.forEach(el => scrollObserver.observe(el));
 });
